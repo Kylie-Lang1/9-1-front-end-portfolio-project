@@ -58,23 +58,34 @@ width: 146px;
 
 main {
     display: grid;
-    grid-template-columns: 70% auto;
-    column-gap: 20px;
+    /* grid-template-columns: 70% auto; */
+    /* column-gap: 20px; */
+    margin-bottom: 15px;
 }
 
 main div {
     text-align: center;
     border-radius: 20px;
-    background-color: beige;
+    /* background-color: beige; */
 }
 
 .question {
     padding-bottom: 20px;
+    background-color: beige;
     border: 5px solid green;
+    width: 700px;
+    margin: auto;
+    margin-bottom: 20px;
 }
 
 .score {
     border: 5px solid black;
+    background-color: beige;
+    width: 250px;
+    position: fixed;
+    top: 140px;
+    right: 75px;
+
 }
 
 .hidden {

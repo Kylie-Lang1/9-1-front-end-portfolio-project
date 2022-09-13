@@ -122,6 +122,31 @@ select.addEventListener(`submit`, (event) => {
 
             answer.innerHTML = `<span>Answer:</span> ${res[randomNum[0]][`answer`]}`
             
+            // const br = document.createElement(`br`)
+            // const newQ = document.createElement(`div`)
+            // const p1 = document.createElement(`p`)
+            // p1.classList.add(`count`)
+            // const p2 = document.createElement(`p`)
+            // p2.classList.add(`q`)
+            // const p3 = document.createElement(`p`)
+            // p3.classList.add(`answer`)
+            // const input1 = document.createElement(`input`)
+            // input1.innerHTML = `<input type="text" name="answer" id="answer"></input>`
+            // const input2 = document.createElement(`input`)
+            // input2.innerHTML = `<input type="submit" id="submit">`
+
+            const newQ = document.createElement(`div`)
+            newQ.innerHTML = 
+            `<div class="question">
+                <p class="count">Question:</p>
+                <p class="q"></p>
+                <p class="answer"></p>
+                <input type="text" name="answer" id="answer">
+                <input type="submit" id="submit">        
+            </div>`
+            // newQ.innerHTML = question.innerHTML
+            main.append(newQ)
+
         })
 
         // for(let i=0; i<15; i++){
