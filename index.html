@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trivia Challenge</title>
+    <link rel="stylesheet" href="./style.css">
+    <script defer src="./main.js"></script>
+</head>
+<body>
+    <header>
+         <nav>
+            <a href="./index.html">Home</a>
+            <a href="./about.html">About</a>
+        </nav>
+        <div class="header">
+            <h1>Trivia Challenge</h1>
+            <p class="intro">Test your knowledge and learn new facts.</p>
+            <p class="hidden">Please choose a category and difficulty, or select random</p>
+        </div>
+    </header>
+    <form class="popup hidden">
+        <p>Welcome to the Trivia Challenge! Please enter your name</p>
+        <input type="text" name="name" id="name">
+        <input type="submit" name="name" id="name-submit">
+    </form>
+    <form class="select hidden">
+        <label for="category">
+            Category:
+            <select name="category" id="category" required>
+                <option>--Select a Category--</option>
+                <option value="Trivia">Trivia</option>
+                <option value="TV_Trivia">TV Trivia</option>
+                <option value="History">History</option>
+                <option value="US_cities">U.S. Cities</option>
+                <option value="random">Random</option>
+            </select>
+        </label>
+        <br>
+        <label for="Difficulty">
+            Difficulty:
+            <select name="difficulty" id="difficulty" required>
+                <option>--Select a Difficulty--</option>
+                <option value="easy">Easy</option>
+                <option value="medium">Medium</option>
+                <option value="hard">Hard</option>
+            </select>
+        </label>
+        <br>
+        <br>
+        <button>Test my Knowledge</button>    
+    </form>
+    <main>
+        <div class="question hidden">
+            <p class="count">Question:</p>
+            <p class="q"></p>
+            <input type="text" name="answer" id="answer">
+            <input type="submit" id="submit">        
+        </div>
+        <div class="score hidden">
+            <p>Score</p>
+        </div>
+    </main>
+</body>
+</html>

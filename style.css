@@ -1,0 +1,82 @@
+body {
+    /* background-color: rgb(206, 221, 228); */
+    background-color: aliceblue;
+    /* background-color: azure; */
+    background-color: rgb(231, 237, 243);
+    margin: 0;
+}
+
+h1 {
+    color: rgb(242, 242, 15);
+}
+
+header {
+    text-align: center;
+    border: 1px solid black;
+    margin-bottom: 20px;
+    background-color: rgb(16, 94, 16);
+    color: white;
+    display: grid;
+    grid-template-columns: 7% auto;
+}
+
+nav {
+    /* position: fixed; */
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    text-decoration: none;
+    text-align: center;
+}
+
+nav a {
+    margin: auto;
+    padding: 20px;
+    background-color: darkgray;
+    color: white;
+}
+
+.popup {
+    width: 250px;
+    border: 1px solid black;
+    background-color: beige;
+    margin: auto;
+}
+
+form {
+    border: 1px solid black;
+    text-align: center;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    background-color: beige;
+    width: 500px;
+    margin: auto;
+}
+
+#difficulty {
+width: 146px;
+}
+
+main {
+    display: grid;
+    grid-template-columns: 70% auto;
+    column-gap: 20px;
+}
+
+main div {
+    text-align: center;
+    border-radius: 20px;
+    background-color: beige;
+}
+
+.question {
+    padding-bottom: 20px;
+    border: 5px solid green;
+}
+
+.score {
+    border: 5px solid black;
+}
+
+.hidden {
+    display: none;
+}
