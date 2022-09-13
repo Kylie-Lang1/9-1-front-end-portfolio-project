@@ -33,11 +33,17 @@ const main = document.querySelector(`main`)
 const q = document.querySelector(`.q`)
 const submit = document.querySelector(`#submit`)
 const answer = document.querySelector(`.answer`)
+const textInput = document.querySelector(`#answer`)
 
 //Declaring variables that can be re-assigned vales
 let playerName = ``
 let category = ``
 let difficulty = ``
+
+//Function for creating new question
+function createNewQ (){
+    
+}
 
 //Response for successful API call
 fetch(`${BASE_URL}${clues}`)
@@ -101,14 +107,15 @@ select.addEventListener(`submit`, (event) => {
         
         //Random number generator
         let randomNum = []
-        for(let i=0; i<15; i++){
+        for(let i=0; i<10; i++){
             num = (Math.random()*res.length).toFixed(0)
-            if (!randomNum.includes(num)){
+            if (!randomNum.includes(num) && num <= res.length){
                 randomNum[i] = Number(num) 
-            } else {
+            } else if (Number(num+1) <= res.length){
                 randomNum[i] = Number(num+1)
+            } else {
+                randomNum[i] = Number(num-1)
             }
-            console.log(randomNum)
         }
 
         //Adding text content for first question
@@ -122,30 +129,30 @@ select.addEventListener(`submit`, (event) => {
 
             answer.innerHTML = `<span>Answer:</span> ${res[randomNum[0]][`answer`]}`
             
-            // const br = document.createElement(`br`)
-            // const newQ = document.createElement(`div`)
-            // const p1 = document.createElement(`p`)
-            // p1.classList.add(`count`)
-            // const p2 = document.createElement(`p`)
-            // p2.classList.add(`q`)
-            // const p3 = document.createElement(`p`)
-            // p3.classList.add(`answer`)
-            // const input1 = document.createElement(`input`)
-            // input1.innerHTML = `<input type="text" name="answer" id="answer"></input>`
-            // const input2 = document.createElement(`input`)
-            // input2.innerHTML = `<input type="submit" id="submit">`
+            submit.classList.add(`hidden`)
+            textInput.classList.add(`hidden`) 
 
-            const newQ = document.createElement(`div`)
-            newQ.innerHTML = 
-            `<div class="question">
-                <p class="count">Question:</p>
-                <p class="q"></p>
-                <p class="answer"></p>
-                <input type="text" name="answer" id="answer">
-                <input type="submit" id="submit">        
-            </div>`
-            // newQ.innerHTML = question.innerHTML
-            main.append(newQ)
+            for(let i=1; i<15; i++){
+                let nextQ = 2
+
+                const newQ = document.createElement(`div`)
+                newQ.innerHTML = 
+                `<div class="question new${nextQ}">
+                    <p class="count new_p1_${nextQ}">Question:</p>
+                    <p class="q new_p2_${nextQ}"></p>
+                    <p class="answer new_p3_${nextQ}"></p>
+                    <input type="text" name="answer" id="answer" class="new${nextQ}">
+                    <input type="submit" id="submit" class="new${nextQ}">        
+                </div>`
+
+                const p2 = document.querySelector(`.new_p2_${nextQ}`)
+                p2.textContent = `${res[randomNum[i]][`question`]}`
+                const p3 = document.querySelector(`.new_p2_${nextQ}`)
+                p3.innerHTML = `<span>Answer:</span> ${res[randomNum[i]][`answer`]}`
+                main.append(newQ)
+            }
+            
+
 
         })
 
@@ -157,6 +164,3 @@ select.addEventListener(`submit`, (event) => {
     })
     .catch(err => console.log(err))
 })
-
-
-// fetch(${BASE_URL})

@@ -82,6 +82,7 @@ main div {
     border: 5px solid black;
     background-color: beige;
     width: 250px;
+    height: 100px;
     position: fixed;
     top: 140px;
     right: 75px;
