@@ -40,9 +40,6 @@ const answers = document.querySelectorAll(`.answer`)
 const textAnswers = document.querySelectorAll(`text_answer`)
 const submits = document.querySelectorAll(`.submit`)
 
-console.log(answers)
-
-
 //Declaring variables that can be re-assigned vales
 let playerName = ``
 let category = ``
@@ -80,7 +77,7 @@ select.addEventListener(`submit`, (event) => {
         select.classList.toggle(`hidden`)
         main.classList.remove(`hidden`)
         question.classList.remove(`hidden`)
-        score.classList.remove(`hidden`)
+        // score.classList.remove(`hidden`)
     }
 
     //Re-assigning selected difficulty to API search parameter value
@@ -126,20 +123,21 @@ select.addEventListener(`submit`, (event) => {
 
             let qNum = 1
 
-            qs.forEach((q) => {
+            qs.forEach((q, i) => {
                 // for(let i=0; i<10; i++){
                 q.textContent = `${res[randomNum[i]][`question`]}`
                 // }
                 // i++
                 console.log(q)
             })
-            answers.forEach((answer) => {
+            answers.forEach((answer, i) => {
                 // for(let i=0; i<10; i++){
                 answer.innerHTML = `<span>Answer:</span> ${res[randomNum[i]][`answer`]}`
                 answer.classList.add(`hidden`)
+                console.log(answer)
                 // }
                 // i++
-                console.log(res[randomNum[i]][`answer`])
+                // console.log(res[randomNum[i]][`answer`])
             })
 
             textAnswers.forEach((text) => {
@@ -149,10 +147,23 @@ select.addEventListener(`submit`, (event) => {
             submits.forEach((submit) => {
                 submit.addEventListener(`click`, (event) => {
                     event.preventDefault()
+                    console.log(event)
+
+                    let a = document.querySelector(`.answer.q${qNum}`)
 
                     submit.classList.add(`hidden`)
                     document.querySelector(`.text_answer.q${qNum}`).classList.add(`hidden`)
-                    document.querySelector(`.answer.q${qNum}`).classList.remove(`hidden`)
+                    a.classList.remove(`hidden`)
+                    if(`${res[randomNum[i]][`answer`]}`=== `${event.target.value}`){
+                        a.style.color = `green`
+                    } else {
+                        a.style.color = `red`
+                    }
+                    console.log(a)
+                    console.log(res[randomNum[i]][`answer`])
+                    console.log(event.target.value)
+                    // console.log(event.target.value)
+                    // console.log(event.path[0].value)
                     document.querySelector(`.question.q${qNum+1}`).classList.remove(`hidden`)
                     qNum++
                 })
