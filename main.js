@@ -17,8 +17,8 @@ const mediumId = `300`
 const hardId = `600`
 
 //Create counter variables
-const qCount = 1
-const scoreCount = 0
+let qCount = 1
+let scoreCount = 0
 
 //Selecting elements from the DOM
 const popup = document.querySelector(`.popup`)
@@ -35,15 +35,18 @@ const submit = document.querySelector(`#submit`)
 const answer = document.querySelector(`.answer`)
 const textInput = document.querySelector(`#answer`)
 
+const qs = document.querySelectorAll(`.q`)
+const answers = document.querySelectorAll(`.answer`)
+const textAnswers = document.querySelectorAll(`text_answer`)
+const submits = document.querySelectorAll(`.submit`)
+
+console.log(answers)
+
+
 //Declaring variables that can be re-assigned vales
 let playerName = ``
 let category = ``
 let difficulty = ``
-
-//Function for creating new question
-function createNewQ (){
-    
-}
 
 //Response for successful API call
 fetch(`${BASE_URL}${clues}`)
@@ -117,50 +120,44 @@ select.addEventListener(`submit`, (event) => {
                 randomNum[i] = Number(num-1)
             }
         }
+        
+        //Adding text content for questions from API
+        for(let i=0; i<10; i++){
 
-        //Adding text content for first question
-        questionNum.textContent = `Question ${qCount}:`
-        console.log(res)
-        q.textContent = `${res[randomNum[0]][`question`]}`
+            let qNum = 1
 
-        //Adding event listener for each question submit
-        submit.addEventListener(`click`, (event) => {
-            event.preventDefault()
+            qs.forEach((q) => {
+                // for(let i=0; i<10; i++){
+                q.textContent = `${res[randomNum[i]][`question`]}`
+                // }
+                // i++
+                console.log(q)
+            })
+            answers.forEach((answer) => {
+                // for(let i=0; i<10; i++){
+                answer.innerHTML = `<span>Answer:</span> ${res[randomNum[i]][`answer`]}`
+                answer.classList.add(`hidden`)
+                // }
+                // i++
+                console.log(res[randomNum[i]][`answer`])
+            })
 
-            answer.innerHTML = `<span>Answer:</span> ${res[randomNum[0]][`answer`]}`
-            
-            submit.classList.add(`hidden`)
-            textInput.classList.add(`hidden`) 
+            textAnswers.forEach((text) => {
+                textAnswers.classList.remove(`hidden`)
+            })
 
-            for(let i=1; i<15; i++){
-                let nextQ = 2
+            submits.forEach((submit) => {
+                submit.addEventListener(`click`, (event) => {
+                    event.preventDefault()
 
-                const newQ = document.createElement(`div`)
-                newQ.innerHTML = 
-                `<div class="question new${nextQ}">
-                    <p class="count new_p1_${nextQ}">Question:</p>
-                    <p class="q new_p2_${nextQ}"></p>
-                    <p class="answer new_p3_${nextQ}"></p>
-                    <input type="text" name="answer" id="answer" class="new${nextQ}">
-                    <input type="submit" id="submit" class="new${nextQ}">        
-                </div>`
-
-                const p2 = document.querySelector(`.new_p2_${nextQ}`)
-                p2.textContent = `${res[randomNum[i]][`question`]}`
-                const p3 = document.querySelector(`.new_p2_${nextQ}`)
-                p3.innerHTML = `<span>Answer:</span> ${res[randomNum[i]][`answer`]}`
-                main.append(newQ)
-            }
-            
-
-
-        })
-
-        // for(let i=0; i<15; i++){
-        //     q.textContent = `${res[randomNum[i]]}`
-        // }
-        // console.log(res)
-        // q.textContent = `${res[0][`question`]}`
+                    submit.classList.add(`hidden`)
+                    document.querySelector(`.text_answer.q${qNum}`).classList.add(`hidden`)
+                    document.querySelector(`.answer.q${qNum}`).classList.remove(`hidden`)
+                    document.querySelector(`.question.q${qNum+1}`).classList.remove(`hidden`)
+                    qNum++
+                })
+            })
+        }
     })
     .catch(err => console.log(err))
 })
