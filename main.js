@@ -28,6 +28,8 @@ const question = document.querySelector(`.question`);
 const questionNum = document.querySelector(`.count`);
 const score = document.querySelector(`.score`);
 const main = document.querySelector(`main`);
+const scoreNumber = document.querySelector(`.number`);
+
 const q = document.querySelector(`.q`);
 const submit = document.querySelector(`#submit`);
 const answer = document.querySelector(`.answer`);
@@ -158,6 +160,12 @@ select.addEventListener(`submit`, (event) => {
               ans.style.color = `green`;
             } else {
               ans.style.color = `red`;
+            }
+
+            //Adding to score for correct answers
+            if (ans.style.color === `green`){
+                scoreCount += res[randomNum[i]][`value`]
+                scoreNumber.innerText = `${scoreCount}`
             }
 
             //Show next question after submitting previous question
