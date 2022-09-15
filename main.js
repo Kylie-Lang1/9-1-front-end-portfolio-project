@@ -108,7 +108,7 @@ select.addEventListener(`submit`, (event) => {
         //Random number generator
         let randomNum = []
         for(let i=0; i<10; i++){
-            num = (Math.random()*res.length).toFixed(0)
+            const num = (Math.random()*res.length).toFixed(0)
             if (!randomNum.includes(num) && num <= res.length){
                 randomNum[i] = Number(num) 
             } else if (Number(num+1) <= res.length){
@@ -122,22 +122,18 @@ select.addEventListener(`submit`, (event) => {
         for(let i=0; i<10; i++){
 
             let qNum = 1
+            // const correctAnswer = `${res[randomNum[i]][`answer`]}`
+            // const currentQ = `${res[randomNum[i]][`question`]}`
 
-            qs.forEach((q, i) => {
-                // for(let i=0; i<10; i++){
+            qs.forEach((q) => {
                 q.textContent = `${res[randomNum[i]][`question`]}`
-                // }
-                // i++
                 console.log(q)
             })
-            answers.forEach((answer, i) => {
-                // for(let i=0; i<10; i++){
+            answers.forEach((answer) => {
                 answer.innerHTML = `<span>Answer:</span> ${res[randomNum[i]][`answer`]}`
                 answer.classList.add(`hidden`)
                 console.log(answer)
-                // }
-                // i++
-                // console.log(res[randomNum[i]][`answer`])
+                // console.log(correctAnswer)
             })
 
             textAnswers.forEach((text) => {
@@ -149,12 +145,15 @@ select.addEventListener(`submit`, (event) => {
                     event.preventDefault()
                     console.log(event)
 
-                    let a = document.querySelector(`.answer.q${qNum}`)
+                    const correctAnswer = `${res[randomNum[i]][`answer`]}`
+                    const a = document.querySelector(`.answer.q${qNum}`)
+                    const input = document.querySelector(`#answer${qNum}`)
+                    console.log(input)
 
                     submit.classList.add(`hidden`)
                     document.querySelector(`.text_answer.q${qNum}`).classList.add(`hidden`)
                     a.classList.remove(`hidden`)
-                    if(`${res[randomNum[i]][`answer`]}`=== `${event.target.value}`){
+                    if(correctAnswer.toLowerCase().includes(input.value.toLowerCase()) && (input.value.length >= (correctAnswer.length-2))){
                         a.style.color = `green`
                     } else {
                         a.style.color = `red`
@@ -162,8 +161,7 @@ select.addEventListener(`submit`, (event) => {
                     console.log(a)
                     console.log(res[randomNum[i]][`answer`])
                     console.log(event.target.value)
-                    // console.log(event.target.value)
-                    // console.log(event.path[0].value)
+
                     document.querySelector(`.question.q${qNum+1}`).classList.remove(`hidden`)
                     qNum++
                 })
