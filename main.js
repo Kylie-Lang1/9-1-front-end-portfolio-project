@@ -127,12 +127,14 @@ select.addEventListener(`submit`, (event) => {
         });
 
         answers.forEach((answer, i) => {
-          answer.innerHTML = `<span>Answer:</span> ${res[randomNum[i]][`answer`]}`;
+          answer.innerHTML = `<span>Answer:</span> ${
+            res[randomNum[i]][`answer`]
+          }`;
           answer.classList.add(`hidden`);
         });
 
         textAnswers.forEach((text) => {
-          text.classList.remove(`hidden`);
+          textAnswers.classList.remove(`hidden`);
         });
 
         submits.forEach((submit, i) => {
@@ -142,13 +144,13 @@ select.addEventListener(`submit`, (event) => {
             const ans = document.querySelector(`.answer.q${qNum}`);
 
             submit.classList.add(`hidden`);
-            document.querySelector(`.text_answer.q${qNum}`).classList.add(`hidden`);
+            document
+              .querySelector(`.text_answer.q${qNum}`)
+              .classList.add(`hidden`);
             ans.classList.remove(`hidden`);
-
             const input = document.querySelector(`#answer${qNum}`);
-            const correctAnswer = res[randomNum[i]][`answer`];
-            
-            if (correctAnswer.toLowerCase().includes(input.value.toLowerCase()) && input.value.length >= correctAnswer.length - 2) {
+            const correctAns = res[randomNum[i]][`answer`];
+            if (correctAns.toLowerCase().includes(input.value.toLowerCase()) && input.value.length >= correctAns.length-2) {
               ans.style.color = `green`;
             } else {
               ans.style.color = `red`;
