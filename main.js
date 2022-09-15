@@ -125,11 +125,11 @@ select.addEventListener(`submit`, (event) => {
             // const correctAnswer = `${res[randomNum[i]][`answer`]}`
             // const currentQ = `${res[randomNum[i]][`question`]}`
 
-            qs.forEach((q) => {
+            qs.forEach((q, i) => {
                 q.textContent = `${res[randomNum[i]][`question`]}`
                 console.log(q)
             })
-            answers.forEach((answer) => {
+            answers.forEach((answer, i) => {
                 answer.innerHTML = `<span>Answer:</span> ${res[randomNum[i]][`answer`]}`
                 answer.classList.add(`hidden`)
                 console.log(answer)
