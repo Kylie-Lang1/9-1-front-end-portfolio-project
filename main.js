@@ -78,7 +78,7 @@ select.addEventListener(`submit`, (event) => {
     select.classList.toggle(`hidden`);
     main.classList.remove(`hidden`);
     question.classList.remove(`hidden`);
-    // score.classList.remove(`hidden`)
+    score.classList.remove(`hidden`)
   }
 
   //Re-assigning selected difficulty to API search parameter value
@@ -134,30 +134,36 @@ select.addEventListener(`submit`, (event) => {
         });
 
         textAnswers.forEach((text) => {
-          textAnswers.classList.remove(`hidden`);
+          text.classList.remove(`hidden`);
         });
 
+        //Adding event listener to submit to show correct answer with different styling based on incorrect/correct input
         submits.forEach((submit, i) => {
           submit.addEventListener(`click`, (event) => {
             event.preventDefault();
 
+            //Selecting answer elements and setting variable for correct answer
             const ans = document.querySelector(`.answer.q${qNum}`);
-
-            submit.classList.add(`hidden`);
-            document
-              .querySelector(`.text_answer.q${qNum}`)
-              .classList.add(`hidden`);
-            ans.classList.remove(`hidden`);
             const input = document.querySelector(`#answer${qNum}`);
+            const text = document.querySelector(`.text_answer.q${qNum}`)
             const correctAns = res[randomNum[i]][`answer`];
+
+            //Add/remove .hidden class for elements
+            submit.classList.add(`hidden`);
+            text.classList.add(`hidden`);
+            ans.classList.remove(`hidden`);
+
+            //Changing styling of revealed correct answer based on incorrect/correct input
             if (correctAns.toLowerCase().includes(input.value.toLowerCase()) && input.value.length >= correctAns.length-2) {
               ans.style.color = `green`;
             } else {
               ans.style.color = `red`;
             }
-            document
-              .querySelector(`.question.q${qNum + 1}`)
-              .classList.remove(`hidden`);
+
+            //Show next question after submitting previous question
+            document.querySelector(`.question.q${qNum + 1}`).classList.remove(`hidden`);
+
+            //Increment qNum for the next question
             qNum++;
           });
         });
