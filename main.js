@@ -122,6 +122,7 @@ select.addEventListener(`submit`, (event) => {
         for(let i=0; i<10; i++){
 
             let qNum = 1
+<<<<<<< HEAD
             // const correctAnswer = `${res[randomNum[i]][`answer`]}`
             // const currentQ = `${res[randomNum[i]][`question`]}`
 
@@ -134,6 +135,20 @@ select.addEventListener(`submit`, (event) => {
                 answer.classList.add(`hidden`)
                 console.log(answer)
                 // console.log(correctAnswer)
+=======
+            const correctAnswer = `${res[randomNum[i]][`answer`]}`
+            const currentQ = `${res[randomNum[i]][`question`]}`
+
+            qs.forEach((q) => {
+                q.textContent = `${currentQ}`
+                console.log(q)
+            })
+            answers.forEach((answer) => {
+                answer.innerHTML = `<span>Answer:</span> ${correctAnswer}`
+                answer.classList.add(`hidden`)
+                console.log(answer)
+                console.log(correctAnswer)
+>>>>>>> e1116b37e8a4c3166adab4691285dafd06e77a17
             })
 
             textAnswers.forEach((text) => {
@@ -145,7 +160,10 @@ select.addEventListener(`submit`, (event) => {
                     event.preventDefault()
                     console.log(event)
 
+<<<<<<< HEAD
                     const correctAnswer = `${res[randomNum[i]][`answer`]}`
+=======
+>>>>>>> e1116b37e8a4c3166adab4691285dafd06e77a17
                     const a = document.querySelector(`.answer.q${qNum}`)
                     const input = document.querySelector(`#answer${qNum}`)
                     console.log(input)
