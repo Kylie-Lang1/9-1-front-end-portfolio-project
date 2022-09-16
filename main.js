@@ -108,17 +108,23 @@ select.addEventListener(`submit`, (event) => {
       //Random number generator
       let randomNum = [];
       for (let i = 0; i < 10; i++) {
-        let num = (Math.random() * res.length).toFixed(0);
+        let num = Number((Math.random() * res.length).toFixed(0));
         if (
           !randomNum.includes(num) && 
           num <= res.length
         ) {
           randomNum[i] = Number(num);
-        } else if (Number(num + 1) <= res.length) {
+        } else if (
+          !randomNum.includes(num + 1) && 
+          Number(num + 1) <= res.length
+        ) {
           randomNum[i] = Number(num + 1);
-        } else {
+        } else if (
+          !randomNum.includes(num -1) && 
+          Number(num - 1) >= 0
+        ){
           randomNum[i] = Number(num - 1);
-        }
+        } 
       }
 
       //Adding text content for questions from API
@@ -137,7 +143,7 @@ select.addEventListener(`submit`, (event) => {
         });
 
         textAnswers.forEach((text) => {
-          text.classList.remove(`hidden`)
+          text.classList.remove(`hidden`);
         });
 
         //Adding event listener to submit to show correct answer with different styling based on incorrect/correct input
@@ -164,25 +170,25 @@ select.addEventListener(`submit`, (event) => {
               ans.style.color = `green`;
             } else {
               ans.style.color = `red`;
-            }
+            };
 
             //Adding to score for correct answers
             if (ans.style.color === `green`){
               scoreCount += res[randomNum[i]][`value`];
               scoreNumber.innerText = `${scoreCount}`;
-            }
+            };
 
             if (!q10.classList.contains(`hidden`)){
               message.classList.remove(`hidden`);
               congrats.innerText = `Congrats ${playerName}!`;
               end.innerHTML = `You've completed the Trivia Challenge with a score of <span>${scoreCount}</span>. Click the home button to play again.`;
-            }
+            };
 
             //Show next question after submitting previous question with guard clause to stop after reaching q10
             if (qNum <=9){
               const nextQ = document.querySelector(`.question.q${qNum + 1}`);
               nextQ.classList.remove(`hidden`);
-            }
+            };
             //Increment qNum for the next question
               qNum++;
           });
