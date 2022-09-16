@@ -29,6 +29,10 @@ const score = document.querySelector(`.score`);
 const main = document.querySelector(`main`);
 const scoreNumber = document.querySelector(`.number`);
 const q10 = document.querySelector(`.answer.q10`)
+const message = document.querySelector(`#congrats`)
+const congrats = document.querySelector(`.congrats`)
+const end = document.querySelector(`.end`)
+const doc = document.querySelector(`body`)
 
 //Selecting multiple elements from the DOM
 const qs = document.querySelectorAll(`.q`);
@@ -115,7 +119,7 @@ select.addEventListener(`submit`, (event) => {
       }
 
       //Adding text content for questions from API
-      for (let i = 0; i < 10; i++) {
+      for (let i = 0; i <= 9; i++) {
         let qNum = 1;
 
         qs.forEach((q, i) => {
@@ -158,20 +162,23 @@ select.addEventListener(`submit`, (event) => {
 
             //Adding to score for correct answers
             if (ans.style.color === `green`){
-                scoreCount += res[randomNum[i]][`value`];
-                scoreNumber.innerText = `${scoreCount}`;
+              scoreCount += res[randomNum[i]][`value`];
+              scoreNumber.innerText = `${scoreCount}`;
             }
 
-            //Show next question after submitting previous question
-            const nextQ = document.querySelector(`.question.q${qNum + 1}`);
-            nextQ.classList.remove(`hidden`);
+            if (!q10.classList.contains(`hidden`)){
+              message.classList.remove(`hidden`)
+              congrats.innerText = `Congrats ${playerName}!`
+              end.innerHTML = `You've completed the Trivia Challenge with a score of <span>${scoreCount}</span>. Click the home button to play again.`
+            }
 
+            //Show next question after submitting previous question with guard clause to stop after reaching q10
+            if (qNum <=9){
+              const nextQ = document.querySelector(`.question.q${qNum + 1}`)
+              nextQ.classList.remove(`hidden`);
+            }
             //Increment qNum for the next question
-            qNum++;
-
-            // if (!q10.classList.includes(`hidden`)){
-
-            // }
+              qNum++
           });
         });
       }

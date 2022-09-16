@@ -169,9 +169,9 @@ span {
 }
 
 #congrats {
-    border: 2px solid black;
+    border: 5px solid black;
     border-radius: 8px;
-    background-color: beige;
+    background-color: yellow;
     width: 400px;
     text-align: center;
     padding: 10px 80px;
