@@ -143,7 +143,7 @@ select.addEventListener(`submit`, (event) => {
         });
 
         textAnswers.forEach((text) => {
-          text.classList.remove(`hidden`);
+          text.classList.remove(`hidden`)
         });
 
         //Adding event listener to submit to show correct answer with different styling based on incorrect/correct input
@@ -170,25 +170,25 @@ select.addEventListener(`submit`, (event) => {
               ans.style.color = `green`;
             } else {
               ans.style.color = `red`;
-            };
+            }
 
             //Adding to score for correct answers
             if (ans.style.color === `green`){
               scoreCount += res[randomNum[i]][`value`];
               scoreNumber.innerText = `${scoreCount}`;
-            };
+            }
 
             if (!q10.classList.contains(`hidden`)){
               message.classList.remove(`hidden`);
               congrats.innerText = `Congrats ${playerName}!`;
               end.innerHTML = `You've completed the Trivia Challenge with a score of <span>${scoreCount}</span>. Click the home button to play again.`;
-            };
+            }
 
             //Show next question after submitting previous question with guard clause to stop after reaching q10
             if (qNum <=9){
               const nextQ = document.querySelector(`.question.q${qNum + 1}`);
               nextQ.classList.remove(`hidden`);
-            };
+            }
             //Increment qNum for the next question
               qNum++;
           });
