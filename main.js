@@ -182,6 +182,7 @@ select.addEventListener(`submit`, (event) => {
               message.classList.remove(`hidden`);
               congrats.innerText = `Congrats ${playerName}!`;
               end.innerHTML = `You've completed the Trivia Challenge with a score of <span>${scoreCount}</span>. Click the home button to play again.`;
+              score.classList.add(`end`);
             }
 
             //Show next question after submitting previous question with guard clause to stop after reaching q10
