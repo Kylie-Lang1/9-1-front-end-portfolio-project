@@ -45,3 +45,8 @@ img {
     width: 800px;
     height: auto;
 }
+
+span a {
+    color: yellow;
+    text-decoration: underline;
+}

@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trivia Challenge</title>
+    <link rel="stylesheet" href="./style.css">
+    <script defer src="./main.js"></script>
+</head>
+<body>
+    <header>
+         <nav>
+            <div>
+                <a href="./trivia.html" id="home" title="Return to homepage">
+                    <img class="home" src="./assets/Home button.png">
+                </a>
+            </div>
+            <div>
+                <a href="./index.html" id="about">
+                    <img class="about" title="Click here to learn more" src="./assets/About Button.png">
+                </a>
+            </div>
+        </nav>
+        <div class="header">
+            <h1>Trivia Challenge</h1>
+            <p class="intro">Test your knowledge and learn new facts.</p>
+        </div>
+    </header>
+    <form class="popup hidden">
+        <p>Welcome to the Trivia Challenge! Please enter your name</p>
+        <input type="text" name="name" id="name" required>
+        <input type="submit" name="name" id="name-submit" required>
+    </form>
+    <form class="select hidden">
+        <p class="instructions">Please choose a category and difficulty level.</p>
+        <label for="category">
+            Category: 
+            <select name="category" id="category" required>
+                <option>--Select a Category--</option>
+                <option value="Trivia">Trivia</option>
+                <option value="TV_Trivia">TV Trivia</option>
+                <option value="History">History</option>
+                <option value="US_cities">U.S. Cities</option>
+            </select>
+        </label>
+        <br>
+        <label for="Difficulty">
+            Difficulty:
+            <select name="difficulty" id="difficulty" required>
+                <option>--Select a Difficulty--</option>
+                <option value="easy">Easy</option>
+                <option value="medium">Medium</option>
+                <option value="hard">Hard</option>
+            </select>
+        </label>
+        <br>
+        <br>
+        <button class="button">
+            <img src="./assets/Red button.png" id="button">
+            <div>Test Your Knowledge</div>
+        </button>    
+    </form>
+    <main>
+        <div class="score hidden">
+            <p id="score">Score</p>
+            <p class="number">0</p>
+        </div>
+        <div class="question hidden q1">
+            <p class="count qHead">Question 1:</p>
+            <p class="q"></p>
+            <p class="answer q1"></p>
+            <input type="text" name="answer" id="answer1" class="text_answer q1">
+            <input type="submit" id="submit1" class="submit q1">        
+        </div>
+        <div class="question hidden q2">
+            <p class="qHead q2">Question 2:</p>
+            <p class="q q2"></p>
+            <p class="answer q2"></p>
+            <input type="text" name="answer" id="answer2" class="text_answer q2">
+            <input type="submit" id="submit2" class="submit q2">        
+        </div>
+        <div class="question hidden q3">
+            <p class="qHead q3">Question 3:</p>
+            <p class="q q3"></p>
+            <p class="answer q3"></p>
+            <input type="text" name="answer" id="answer3" class="text_answer q3">
+            <input type="submit" id="submit3" class="submit q3">        
+        </div>
+        <div class="question hidden q4">
+            <p class="qHead q4">Question 4:</p>
+            <p class="q q4"></p>
+            <p class="answer q4"></p>
+            <input type="text" name="answer" id="answer4" class="text_answer q4">
+            <input type="submit" id="submit4" class="submit q4">        
+        </div>
+        <div class="question hidden q5">
+            <p class="qHead q5">Question 5:</p>
+            <p class="q q5"></p>
+            <p class="answer q5"></p>
+            <input type="text" name="answer" id="answer5" class="text_answer q5">
+            <input type="submit" id="submit5" class="submit q5">        
+        </div>
+        <div class="question hidden q6">
+            <p class="qHead q6">Question 6:</p>
+            <p class="q q6"></p>
+            <p class="answer q6"></p>
+            <input type="text" name="answer" id="answer6" class="text_answer q6">
+            <input type="submit" id="submit6" class="submit q6">        
+        </div>
+        <div class="question hidden q7">
+            <p class="qHead q7">Question 7:</p>
+            <p class="q q7"></p>
+            <p class="answer q7"></p>
+            <input type="text" name="answer" id="answer7" class="text_answer q7">
+            <input type="submit" id="submit7" class="submit q7">        
+        </div>
+        <div class="question hidden q8">
+            <p class="qHead q8">Question 8:</p>
+            <p class="q q8"></p>
+            <p class="answer q8"></p>
+            <input type="text" name="answer" id="answer8" class="text_answer q8">
+            <input type="submit" id="submit8" class="submit q8">        
+        </div>
+        <div class="question hidden q9">
+            <p class="qHead q9">Question 9:</p>
+            <p class="q q9"></p>
+            <p class="answer q9"></p>
+            <input type="text" name="answer" id="answer9" class="text_answer q9">
+            <input type="submit" id="submit9" class="submit q9">        
+        </div>
+        <div class="question hidden q10">
+            <p class="qHead q10">Question 10:</p>
+            <p class="q q10"></p>
+            <p class="answer q10"></p>
+            <input type="text" name="answer" id="answer10" class="text_answer q10">
+            <input type="submit" id="submit10" class="submit q10">        
+        </div>
+    </main>
+    <div id="congrats" class="hidden">
+        <p class="congrats"></p>
+        <p class="end"></p>
+    </div>
+</body>
+</html>
