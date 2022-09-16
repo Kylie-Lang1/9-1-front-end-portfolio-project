@@ -59,9 +59,30 @@ form {
     text-align: center;
     padding-top: 15px;
     padding-bottom: 15px;
-    background-color: beige;
+    background-color: rgb(255, 255, 255);
     width: 500px;
     margin: auto;
+}
+
+.button {
+    border: none;
+    background-color: white;
+}
+
+.button {
+    position: relative;
+}
+
+#button {
+    position: relative;
+    border: 1px solid white;
+    height: 30px;
+    width:200px;
+}
+
+.button div {
+    position: absolute;
+    text-align: center
 }
 
 #difficulty {
