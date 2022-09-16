@@ -11,23 +11,31 @@
 <body>
     <header>
          <nav>
-            <a href="./index.html" id="home">Home</a>
-            <a href="./about.html" id="about">About</a>
+            <div>
+                <a href="./index.html" id="home" title="Return to homepage">
+                    <img class="home" src="./assets/Home button.png">
+                </a>
+            </div>
+            <div>
+                <a href="./about.html" id="about">
+                    <img class="about" title="Click here to learn more" src="./assets/About Button.png">
+                </a>
+            </div>
         </nav>
         <div class="header">
             <h1>Trivia Challenge</h1>
             <p class="intro">Test your knowledge and learn new facts.</p>
-            <p class="hidden">Please choose a category and difficulty, or select random</p>
         </div>
     </header>
     <form class="popup hidden">
         <p>Welcome to the Trivia Challenge! Please enter your name</p>
-        <input type="text" name="name" id="name">
-        <input type="submit" name="name" id="name-submit">
+        <input type="text" name="name" id="name" required>
+        <input type="submit" name="name" id="name-submit" required>
     </form>
     <form class="select hidden">
+        <p class="instructions">Please choose a category and difficulty level.</p>
         <label for="category">
-            Category:
+            Category: 
             <select name="category" id="category" required>
                 <option>--Select a Category--</option>
                 <option value="Trivia">Trivia</option>
@@ -55,7 +63,7 @@
     </form>
     <main>
         <div class="score hidden">
-            <p>Score</p>
+            <p id="score">Score</p>
             <p class="number"></p>
         </div>
         <div class="question hidden q1">

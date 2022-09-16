@@ -21,7 +21,6 @@ let scoreCount = 0;
 //Selecting elements from the DOM
 const popup = document.querySelector(`.popup`);
 const select = document.querySelector(`.select`);
-const instructions = document.querySelector(`.header p`);
 const intro = document.querySelector(`.intro`);
 const button = document.querySelector(`button`);
 const question = document.querySelector(`.question`);
@@ -30,11 +29,7 @@ const score = document.querySelector(`.score`);
 const main = document.querySelector(`main`);
 const scoreNumber = document.querySelector(`.number`);
 
-const q = document.querySelector(`.q`);
-const submit = document.querySelector(`#submit`);
-const answer = document.querySelector(`.answer`);
-const textInput = document.querySelector(`#answer`);
-
+//Selecting multiple elements from the DOM
 const qs = document.querySelectorAll(`.q`);
 const answers = document.querySelectorAll(`.answer`);
 const textAnswers = document.querySelectorAll(`text_answer`);
@@ -59,8 +54,6 @@ popup.addEventListener(`submit`, (event) => {
   playerName = `${event.target[0].value}`;
   popup.classList.toggle(`hidden`);
   select.classList.toggle(`hidden`);
-  instructions.classList.toggle(`hidden`);
-  intro.classList.toggle(`hidden`);
 });
 
 //Add event listener for category/difficulty submit button
