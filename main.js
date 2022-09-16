@@ -28,11 +28,11 @@ const questionNum = document.querySelector(`.count`);
 const score = document.querySelector(`.score`);
 const main = document.querySelector(`main`);
 const scoreNumber = document.querySelector(`.number`);
-const q10 = document.querySelector(`.answer.q10`)
-const message = document.querySelector(`#congrats`)
-const congrats = document.querySelector(`.congrats`)
-const end = document.querySelector(`.end`)
-const doc = document.querySelector(`body`)
+const q10 = document.querySelector(`.answer.q10`);
+const message = document.querySelector(`#congrats`);
+const congrats = document.querySelector(`.congrats`);
+const end = document.querySelector(`.end`);
+const doc = document.querySelector(`body`);
 
 //Selecting multiple elements from the DOM
 const qs = document.querySelectorAll(`.q`);
@@ -109,7 +109,10 @@ select.addEventListener(`submit`, (event) => {
       let randomNum = [];
       for (let i = 0; i < 10; i++) {
         let num = (Math.random() * res.length).toFixed(0);
-        if (!randomNum.includes(num) && num <= res.length) {
+        if (
+          !randomNum.includes(num) && 
+          num <= res.length
+        ) {
           randomNum[i] = Number(num);
         } else if (Number(num + 1) <= res.length) {
           randomNum[i] = Number(num + 1);
@@ -123,7 +126,7 @@ select.addEventListener(`submit`, (event) => {
         let qNum = 1;
 
         qs.forEach((q, i) => {
-            q.textContent = `${res[randomNum[i]][`question`]}`
+            q.textContent = `${res[randomNum[i]][`question`]}`;
         });
 
         answers.forEach((answer, i) => {
@@ -134,7 +137,7 @@ select.addEventListener(`submit`, (event) => {
         });
 
         textAnswers.forEach((text) => {
-          text.classList.remove(`hidden`);
+          text.classList.remove(`hidden`)
         });
 
         //Adding event listener to submit to show correct answer with different styling based on incorrect/correct input
@@ -154,7 +157,10 @@ select.addEventListener(`submit`, (event) => {
             ans.classList.remove(`hidden`);
 
             //Changing styling of revealed correct answer based on incorrect/correct input
-            if (correctAns.toLowerCase().includes(input.value.toLowerCase()) && input.value.length >= correctAns.length-2) {
+            if (
+              correctAns.toLowerCase().includes(input.value.toLowerCase()) && 
+              input.value.length >= correctAns.length-2
+            ) {
               ans.style.color = `green`;
             } else {
               ans.style.color = `red`;
@@ -167,21 +173,21 @@ select.addEventListener(`submit`, (event) => {
             }
 
             if (!q10.classList.contains(`hidden`)){
-              message.classList.remove(`hidden`)
-              congrats.innerText = `Congrats ${playerName}!`
-              end.innerHTML = `You've completed the Trivia Challenge with a score of <span>${scoreCount}</span>. Click the home button to play again.`
+              message.classList.remove(`hidden`);
+              congrats.innerText = `Congrats ${playerName}!`;
+              end.innerHTML = `You've completed the Trivia Challenge with a score of <span>${scoreCount}</span>. Click the home button to play again.`;
             }
 
             //Show next question after submitting previous question with guard clause to stop after reaching q10
             if (qNum <=9){
-              const nextQ = document.querySelector(`.question.q${qNum + 1}`)
+              const nextQ = document.querySelector(`.question.q${qNum + 1}`);
               nextQ.classList.remove(`hidden`);
             }
             //Increment qNum for the next question
-              qNum++
+              qNum++;
           });
         });
-      }
+      };
     })
     .catch((err) => console.log(err));
 });
