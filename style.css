@@ -111,7 +111,7 @@ form {
     margin-top: -27px;
 }
 
-form:hovergit {
+form:hover {
     background-color: rgb(246, 246, 160);
 }
 
@@ -158,7 +158,6 @@ span {
     position: fixed;
     top: 155px;
     right: 75px;
-
 }
 
 #score {
@@ -167,6 +166,31 @@ span {
 
 .hidden {
     display: none;
+}
+
+#congrats {
+    border: 2px solid black;
+    border-radius: 8px;
+    background-color: beige;
+    width: 400px;
+    text-align: center;
+    padding: 10px 80px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 17px;
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.congrats {
+    font-size: 19px;
+    font-weight: bold;
+    color: blue;
+}
+
+.end span {
+    text-decoration: underline;
 }
 
 /* Media queries for different screen widths */

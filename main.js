@@ -28,6 +28,7 @@ const questionNum = document.querySelector(`.count`);
 const score = document.querySelector(`.score`);
 const main = document.querySelector(`main`);
 const scoreNumber = document.querySelector(`.number`);
+const q10 = document.querySelector(`.answer.q10`)
 
 //Selecting multiple elements from the DOM
 const qs = document.querySelectorAll(`.q`);
@@ -73,7 +74,7 @@ select.addEventListener(`submit`, (event) => {
     select.classList.toggle(`hidden`);
     main.classList.remove(`hidden`);
     question.classList.remove(`hidden`);
-    score.classList.remove(`hidden`)
+    score.classList.remove(`hidden`);
   }
 
   //Re-assigning selected difficulty to API search parameter value
@@ -118,7 +119,7 @@ select.addEventListener(`submit`, (event) => {
         let qNum = 1;
 
         qs.forEach((q, i) => {
-            q.textContent = `${res[randomNum[i]][`question`]}`;
+            q.textContent = `${res[randomNum[i]][`question`]}`
         });
 
         answers.forEach((answer, i) => {
@@ -140,7 +141,7 @@ select.addEventListener(`submit`, (event) => {
             //Selecting answer elements and setting variable for correct answer
             const ans = document.querySelector(`.answer.q${qNum}`);
             const input = document.querySelector(`#answer${qNum}`);
-            const text = document.querySelector(`.text_answer.q${qNum}`)
+            const text = document.querySelector(`.text_answer.q${qNum}`);
             const correctAns = res[randomNum[i]][`answer`];
 
             //Add/remove .hidden class for elements
@@ -157,15 +158,20 @@ select.addEventListener(`submit`, (event) => {
 
             //Adding to score for correct answers
             if (ans.style.color === `green`){
-                scoreCount += res[randomNum[i]][`value`]
-                scoreNumber.innerText = `${scoreCount}`
+                scoreCount += res[randomNum[i]][`value`];
+                scoreNumber.innerText = `${scoreCount}`;
             }
 
             //Show next question after submitting previous question
-            document.querySelector(`.question.q${qNum + 1}`).classList.remove(`hidden`);
+            const nextQ = document.querySelector(`.question.q${qNum + 1}`);
+            nextQ.classList.remove(`hidden`);
 
             //Increment qNum for the next question
             qNum++;
+
+            // if (!q10.classList.includes(`hidden`)){
+
+            // }
           });
         });
       }
